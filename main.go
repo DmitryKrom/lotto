@@ -71,51 +71,24 @@ func main(){
 	for x := 0; x < anzahl_spiele; x++{
 		wg.Add(1)		
 		go fill_up_spiel(&wg, field)
-		
-		/*one_play := newPlay()
-		zahlen_map := make(map[int]bool)
-		zusatz_map := make(map[int]bool)
-		for i := 0; i <5; i++{
-			zahl := get_random_number(max_lotto, min_lotto)
-			if check_number_exist(zahlen_map, zahl) {
-				i = i-1
-				//fmt.Printf("Zahl %d ist schon da. \n", zahl)
-				continue 
-			} 
-			zahlen_map[zahl] = true
-			one_play.lotto_zahlen = append(one_play.lotto_zahlen, zahl)
-		}
-		
-		for i :=0; i < 2; i++{
-			zahl := get_random_number(max_zusatz, min_lotto)
-			if check_number_exist(zusatz_map, zahl){
-				i = i-1
-				//fmt.Printf("Zusatzzahl %d ist schon da. \n", zahl)
-				continue
-			}
-			zusatz_map[zahl] = true 
-			one_play.zusatz_zahlen = append(one_play.zusatz_zahlen, zahl)
-		}*/
-	//	one_play := <- field
-	//	one_play.sortSpielZahlen()
-	//	play_list = append(play_list, one_play)
 	}
 
   	go recieveData(field)	
 	wg.Wait()
 
-	//for i := 0; i < len(play_list); i++{
-	//	play_list[i].printSpielZahlen()
-	//}
-	
+	printInfo("Erstellt Daten: ")
 	gewinn_zahlen := get_lotto_gewinnzahlen()
 	check_match(gewinn_zahlen)
+}
+
+func printInfo(s string) {
+	fmt.Printf("\n%s %d\n\n", s, len(play_list))
+
 }
 
 func recieveData(field chan play) {
 	for one_play := range field {
 		one_play.sortSpielZahlen()
-	//	one_play.printSpielZahlen()
 		play_list = append(play_list, one_play)
 	}	
 }
