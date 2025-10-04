@@ -13,7 +13,6 @@ import (
 	"github.com/gocolly/colly"
 )
 
-// t "7720098387:AAEq6iBEzkB7jLUFysguHHla6zJWuaDM2vg"
 type play struct {
 	lotto_zahlen  []int
 	zusatz_zahlen []int
