@@ -20,7 +20,6 @@ type play struct {
 
 var play_list []play
 var datum string
-var help string
 var lottotype string
 var anzahl_spiele int
 var wg sync.WaitGroup
