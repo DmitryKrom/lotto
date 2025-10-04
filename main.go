@@ -152,7 +152,7 @@ func fill_up_spiel(wg *sync.WaitGroup, f chan play) {
 		zusatz_map[zahl] = true
 		one_play.zusatz_zahlen = append(one_play.zusatz_zahlen, zahl)
 	}
-	one_play.printSpielZahlen()
+	//one_play.printSpielZahlen()
 	f <- one_play
 	//one_play.sortSpielZahlen()
 	//play_list = append(play_list, one_play)
